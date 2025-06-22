@@ -63,6 +63,16 @@ async function run() {
       res.cookie('token', token,{httpOnly : true, secure : false,}).send({success : true})
     })
 
+
+    app.post('/logout', (req, res)=>{
+      res.clearCookie('token', {
+        httpOnly : true,
+        secure : false
+      }).send({success : true})
+    })
+
+    // job related api -------------
+
     app.get("/jobs", logger, async (req, res) => {
       console.log('inside the logger');
       
